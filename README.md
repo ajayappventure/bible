@@ -23,22 +23,22 @@ Before running the project, make sure you have the following installed on your m
 3. **Configure Environment Variables**  
 
     DATABASE_URL="" <br/>
-    USERPOOL_ID=""
-    CLIENT_ID=""
-    ACCESS_KEY_ID=""
-    SECRET_KEY_ID=""
-    REGION=""
-    SALT_ROUND=10
-    GMAIL_CLIENT_ID =""
-    GMAIL_CLIENT_SECRET =""
-    GMAIL_REDIRECT_URI =""
-    GMAIL_SCOPE =""
+    USERPOOL_ID="" <br/>
+    CLIENT_ID="" <br/>
+    ACCESS_KEY_ID="" <br/>
+    SECRET_KEY_ID="" <br/>
+    REGION="" <br/>
+    SALT_ROUND=10 <br/>
+    GMAIL_CLIENT_ID ="" <br/>
+    GMAIL_CLIENT_SECRET ="" <br/>
+    GMAIL_REDIRECT_URI ="" <br/>
+    GMAIL_SCOPE ="" <br/>
 
 4. **Run Database Migrations**    
 
-    npx prisma init
-    npx prisma migrate dev --name init
-    any time you make changes to schema run : npx prisma generate
+    npx prisma init <br/>
+    npx prisma migrate dev --name init <br/>
+    any time you make changes to schema run : npx prisma generate <br/>
 
 4. **Start the Server**
 
