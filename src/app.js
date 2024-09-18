@@ -3,9 +3,11 @@ const taskRoutes = require("./routes/taskRoutes");
 const gmailRoutes = require("./routes/gmailRouts");
 const authRoutes = require("./routes/authRoutes");
 const userRoutes = require("./routes/userRoutes");
+const swagger = require("../swaggerDocs");
 
 const app = express();
 app.use(express.json());
+app.use(swagger);
 
 app.use("/tasks", taskRoutes);
 app.use("/auth", authRoutes);

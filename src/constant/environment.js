@@ -9,6 +9,8 @@ const env = {
   GMAIL_CLIENT_SECRET: process.env.GMAIL_CLIENT_SECRET,
   GMAIL_REDIRECT_URI: process.env.GMAIL_REDIRECT_URI,
   GMAIL_SCOPE: process.env.GMAIL_SCOPE,
+  PORT: process.env.PORT,
+  SERVER_IP: process.env.SERVER_IP,
 };
 
 module.exports = { env };

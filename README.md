@@ -33,6 +33,8 @@ Before running the project, make sure you have the following installed on your m
    GMAIL_CLIENT_SECRET ="" <br/>
    GMAIL_REDIRECT_URI ="" <br/>
    GMAIL_SCOPE ="" <br/>
+   SERVER_IP="" <br/>
+   PORT="" <br/>
 
 4. **Run Database Migrations**
 
