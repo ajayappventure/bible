@@ -22,7 +22,7 @@ Before running the project, make sure you have the following installed on your m
 
 3. **Configure Environment Variables**  
 
-    DATABASE_URL=""
+    DATABASE_URL="" <br/>
     USERPOOL_ID=""
     CLIENT_ID=""
     ACCESS_KEY_ID=""
