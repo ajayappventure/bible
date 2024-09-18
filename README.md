@@ -14,13 +14,13 @@ Before running the project, make sure you have the following installed on your m
 
 1. **Clone the repository:**
 
-    git clone https://github.com/your-username/your-repo.git
+   git clone https://github.com/your-username/your-repo.git
 
-2. **Install dependencies**   
+2. **Install dependencies**
 
-    npm install
+   npm install
 
-3. **Configure Environment Variables**  
+3. **Configure Environment Variables**
 
     DATABASE_URL="" <br/>
     USERPOOL_ID="" <br/>
@@ -34,18 +34,12 @@ Before running the project, make sure you have the following installed on your m
     GMAIL_REDIRECT_URI ="" <br/>
     GMAIL_SCOPE ="" <br/>
 
-4. **Run Database Migrations**    
+4. **Run Database Migrations**
 
     npx prisma init <br/>
     npx prisma migrate dev --name init <br/>
     any time you make changes to schema run : npx prisma generate <br/>
 
-4. **Start the Server**
+5. **Start the Server**
 
-    npm start
-
-
-    
-
-
-
+   npm start

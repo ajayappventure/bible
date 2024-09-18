@@ -7,6 +7,7 @@ const {
   CognitoIdentityProviderClient,
   AdminConfirmSignUpCommand,
 } = require("@aws-sdk/client-cognito-identity-provider");
+const { verifyAuthToken } = require("../middleware/auth");
 
 // Set up Cognito user pool information
 const poolData = {
@@ -142,7 +143,20 @@ const login = (req, res) => {
   }
 };
 
+const getUserInfo = async (req, res) => {
+  try {
+    const result = await verifyAuthToken(req);
+    if (!result) return res.status(401).json({ error: "Invalid token" });
+    delete result.password;
+    res.status(200).json(result);
+  } catch (error) {
+    console.log("🚀 ~ getUserInfo ~ error:", error);
+    res.status(500).json({ error: "Failed to get user" });
+  }
+};
+
 module.exports = {
   signup,
   login,
+  getUserInfo,
 };

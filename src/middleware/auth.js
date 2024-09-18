@@ -13,7 +13,7 @@ exports.verifyAuthToken = async (req) => {
     const user = await prisma.user.findUnique({
       where: { user_name: decoded.payload.username },
     });
-    if (user) return true;
+    if (user) return user;
     return false;
   } catch (error) {
     return false;
