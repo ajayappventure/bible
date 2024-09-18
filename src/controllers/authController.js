@@ -44,7 +44,7 @@ const signup = async (req, res) => {
         // Handle signup error
         console.error("Error during signup:", err.message || err);
         return res
-          .status(500)
+          .status(400)
           .json({ error: err.message || "An error occurred during signup." });
       }
 
