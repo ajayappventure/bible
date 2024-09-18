@@ -1,6 +1,6 @@
-# Node.js Project
+# Bible Project
 
-This is a Node.js project that integrates AWS Cognito for authentication and uses Prisma ORM for database interaction.
+This code implements AWS Cognito for user registration and login, offering secure authentication via a backend API built with Node.js and the Express framework. It includes a simple cron job to handle scheduled task updates and integrates the Gmail API for seamless email synchronization. Currently, the system supports a single user by saving the token stored in a file, but it can be easily scaled to support multiple users by using a database with encrypted token storage for enhanced security and management.
 
 ## Prerequisites
 
