@@ -36,7 +36,6 @@ Before running the project, make sure you have the following installed on your m
 
 4. **Run Database Migrations**
 
-    npx prisma init <br/>
     npx prisma migrate dev --name init <br/>
     any time you make changes to schema run : npx prisma generate <br/>
 
