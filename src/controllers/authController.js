@@ -29,17 +29,17 @@ const signup = async (req, res) => {
     });
 
     // Extract username and password from the request body
-    const { user_name, password } = req.body;
+    const { username, password } = req.body;
 
     // Validate that both username and password are provided
-    if (!user_name || !password) {
+    if (!username || !password) {
       return res
         .status(400)
         .json({ message: "Username and password are required." });
     }
 
     // Sign up the user using Cognito
-    userPool.signUp(user_name, password, null, null, async (err, result) => {
+    userPool.signUp(username, password, null, null, async (err, result) => {
       if (err) {
         // Handle signup error
         console.error("Error during signup:", err.message || err);
@@ -52,7 +52,7 @@ const signup = async (req, res) => {
         // Confirm the user's signup in Cognito
         const confirmSignUpCommand = new AdminConfirmSignUpCommand({
           UserPoolId: poolData.UserPoolId,
-          Username: user_name,
+          Username: username,
         });
         await cognitoClient.send(confirmSignUpCommand);
 
@@ -64,7 +64,7 @@ const signup = async (req, res) => {
 
         // Store the new user in the Prisma database
         await prisma.user.create({
-          data: { user_name, password: hashedPassword },
+          data: { username, password: hashedPassword },
         });
 
         // Respond with success message
@@ -93,10 +93,10 @@ const signup = async (req, res) => {
 const login = (req, res) => {
   try {
     // Extract username and password from the request body
-    const { user_name, password } = req.body;
+    const { username, password } = req.body;
 
     // Validate that both username and password are provided
-    if (!user_name || !password) {
+    if (!username || !password) {
       return res
         .status(400)
         .json({ message: "Username and password are required." });
@@ -104,13 +104,13 @@ const login = (req, res) => {
 
     // Set up authentication details for Cognito
     const authenticationDetails = new AmazonCognitoId.AuthenticationDetails({
-      Username: user_name,
+      Username: username,
       Password: password,
     });
 
     // Prepare Cognito user data
     const userData = {
-      Username: user_name,
+      Username: username,
       Pool: userPool,
     };
 
@@ -145,10 +145,7 @@ const login = (req, res) => {
 
 const getUserInfo = async (req, res) => {
   try {
-    const result = await verifyAuthToken(req);
-    if (!result) return res.status(401).json({ error: "Invalid token" });
-    delete result.password;
-    res.status(200).json(result);
+    res.status(200).json(req.user);
   } catch (error) {
     console.log("🚀 ~ getUserInfo ~ error:", error);
     res.status(500).json({ error: "Failed to get user" });

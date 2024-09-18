@@ -10,10 +10,10 @@ const {
 
 const router = express.Router();
 
-router.post("/", createTask);
-router.get("/", getAllTasks);
-router.get("/:id", getTaskById);
-router.put("/:id", updateTask);
-router.delete("/:id", deleteTask);
+router.get("/:id", verifyAuthToken, getTaskById);
+router.post("/", verifyAuthToken, createTask);
+router.get("/", verifyAuthToken, getAllTasks);
+router.put("/:id", verifyAuthToken, updateTask);
+router.delete("/:id", verifyAuthToken, deleteTask);
 
 module.exports = router;

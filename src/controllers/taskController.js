@@ -5,9 +5,6 @@ const { verifyAuthToken } = require("../middleware/auth");
 // Create a new task
 const createTask = async (req, res) => {
   try {
-    const result = await verifyAuthToken(req);
-    if (!result) return res.status(401).json({ error: "Invalid token" });
-
     const { title, description } = req.body;
     const task = await prisma.task.create({
       data: { title, description },
@@ -22,9 +19,6 @@ const createTask = async (req, res) => {
 // Get all tasks
 const getAllTasks = async (req, res) => {
   try {
-    const result = await verifyAuthToken(req);
-    if (!result) return res.status(401).json({ error: "Invalid token" });
-
     const tasks = await prisma.task.findMany();
     res.json(tasks);
   } catch (error) {
@@ -35,9 +29,6 @@ const getAllTasks = async (req, res) => {
 // Get a task by ID
 const getTaskById = async (req, res) => {
   try {
-    const result = await verifyAuthToken(req);
-    if (!result) return res.status(401).json({ error: "Invalid token" });
-
     const { id } = req.params;
     console.log("🚀 ~ getTaskById ~ id:", id);
     const task = await prisma.task.findUnique({
@@ -57,9 +48,6 @@ const getTaskById = async (req, res) => {
 // Update a task
 const updateTask = async (req, res) => {
   try {
-    const result = await verifyAuthToken(req);
-    if (!result) return res.status(401).json({ error: "Invalid token" });
-
     const { id } = req.params;
     const { title, description, status } = req.body;
     const updatedTask = await prisma.task.update({
@@ -75,9 +63,6 @@ const updateTask = async (req, res) => {
 // Delete a task
 const deleteTask = async (req, res) => {
   try {
-    const result = await verifyAuthToken(req);
-    if (!result) return res.status(401).json({ error: "Invalid token" });
-
     const { id } = req.params;
     await prisma.task.delete({
       where: { id: id.toString() },
