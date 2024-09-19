@@ -49,7 +49,7 @@ const emailList = async (req, res) => {
     }
 
     if (!tokens || !tokens.access_token) {
-      resstatus(400).send("No access token found. Please authenticate first.");
+      res.status(400).send("No access token found. Please authenticate first.");
       return;
     }
 
